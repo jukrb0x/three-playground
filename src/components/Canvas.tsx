@@ -32,18 +32,17 @@ function Box(props: { position: [number, number, number] }) {
 const CanvasWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #fff3f3;
 `;
 
 export default function ThreeApp() {
   return (
-    <div className='bg-violet-1 ha wa'>
+    <CanvasWrapper className='bg-violet-1'>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Box position={[-1.2, 0, 0]} />
         <Box position={[1.2, 0, 0]} />
       </Canvas>
-    </div>
+    </CanvasWrapper>
   );
 }
