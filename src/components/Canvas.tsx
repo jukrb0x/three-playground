@@ -37,13 +37,13 @@ const CanvasWrapper = styled.div`
 
 export default function ThreeApp() {
   return (
-    <CanvasWrapper>
+    <div className='bg-violet-1 ha wa'>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Box position={[-1.2, 0, 0]} />
         <Box position={[1.2, 0, 0]} />
       </Canvas>
-    </CanvasWrapper>
+    </div>
   );
 }

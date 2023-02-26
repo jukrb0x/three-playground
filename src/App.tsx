@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
-import Canvas from './Canvas';
+import Canvas from './components/Canvas';
 import styled from 'styled-components';
+import { CanvasController } from './components/CanvasController';
 
 const Background = styled.div`
   background-color: #c0eb9d;
@@ -15,7 +15,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <Background className="App">
+    <div className="App bg-lime-2 select-none w-6xl">
       <span
         style={{
           fontWeight: 'bold',
@@ -23,8 +23,13 @@ function App() {
       >
         three.js react app playground
       </span>
-      <Canvas />
-    </Background>
+      <div className="flex h-3xl">
+        <div className='flex-1'>
+          <Canvas />
+          </div>
+        <CanvasController />
+      </div>
+    </div>
   );
 }
 
