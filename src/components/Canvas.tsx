@@ -1,27 +1,20 @@
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
 import { MutableRefObject, RefObject, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-function Box(props: { position: [number, number, number] }) {
-  // This reference gives us direct access to the THREE.Mesh object
-  const ref = useRef();
-  // Hold state for hovered and clicked events
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.x += delta));
-  // useFrame((state, delta) => {
-  //   if (ref && ref.current) return (ref.current.rotation.y += delta);
-  // });
-  // Return the view, these are regular Threejs elements expressed in JSX
+function Box(props: ThreeElements['mesh']) {
+  const mesh = useRef<THREE.Mesh>(null!);
+  const [hovered, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+  useFrame((state, delta) => (mesh.current.rotation.x += delta));
   return (
     <mesh
       {...props}
-      ref={ref as MutableRefObject<any>}
-      scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
+      ref={mesh}
+      scale={active ? 1.5 : 1}
+      onClick={(event) => setActive(!active)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
@@ -36,7 +29,7 @@ const CanvasWrapper = styled.div`
 
 export default function ThreeApp() {
   return (
-    <CanvasWrapper className='bg-violet-1'>
+    <CanvasWrapper className="bg-violet-1">
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
