@@ -4,6 +4,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Ocean from '@/components/OceanExample';
+
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 
@@ -13,6 +15,7 @@ function AppRouter() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
+          <Route path="ocean" element={<Ocean />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
