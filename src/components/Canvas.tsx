@@ -1,4 +1,4 @@
-import { Canvas, ThreeElements, useFrame } from '@react-three/fiber';
+import { Canvas, ThreeElements, useFrame,Vector3 } from '@react-three/fiber';
 import { MutableRefObject, RefObject, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -17,9 +17,10 @@ function Box(props: ThreeElements['mesh']) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}
     >
-      {/*<boxGeometry args={[1, 1, 1]} />*/}
-      <sphereGeometry args={[1, face, face]} />
+      <boxGeometry args={[1, 1, 1]} />
+      {/*<sphereGeometry args={[1, face, face]} />*/}
       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+      {/*<lineBasicMaterial color={'orange'} />*/}
     </mesh>
   );
 }

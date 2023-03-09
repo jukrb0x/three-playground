@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { GeistProvider, CssBaseline } from '@geist-ui/core'
 
-import './App.css';
-import Canvas from './components/Canvas';
-import { CanvasController } from './components/CanvasController';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Home } from './pages/Home';
+import {NotFound} from './pages/NotFound';
 
-function App() {
+function AppRouter(){
   return (
-    <div className="App bg-lime-2 select-none w-6xl">
-      <span
-        style={{
-          fontWeight: 'bold',
-        }}
-      >
-        three.js react app playground
-      </span>
-      <div className="flex h-3xl">
-        <div className="flex-1">
-          <Canvas />
-        </div>
-        <CanvasController />
-      </div>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+function App(){
+  return(
+    <GeistProvider>
+      <CssBaseline />
+      <AppRouter />
+    </GeistProvider>
+  )
 }
 
 export default App;
