@@ -1,4 +1,4 @@
-import Canvas from '@/components/Canvas';
+import AppCanvas from '@/components/Canvas';
 import { CanvasController } from '@/components/CanvasController';
 import {Page} from '@geist-ui/core'
 
@@ -15,7 +15,7 @@ function Home() {
       </span>
       <div className="flex h-3xl">
         <div className="flex-1">
-          <Canvas />
+          <AppCanvas />
         </div>
         <CanvasController />
       </div>
