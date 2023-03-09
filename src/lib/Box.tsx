@@ -1,5 +1,4 @@
-
-import { Canvas, ThreeElements, useFrame,Vector3 } from '@react-three/fiber';
+import { Canvas, ThreeElements, Vector3, useFrame } from '@react-three/fiber';
 import { MutableRefObject, RefObject, useRef, useState } from 'react';
 
 export function Box(props: ThreeElements['mesh']) {

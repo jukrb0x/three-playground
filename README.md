@@ -1,3 +1,3 @@
 # three-playground-webgl
 
-make graphics great again
+Private playground for learning webgl and graphics stuff with Three.js
