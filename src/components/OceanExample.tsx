@@ -1,4 +1,3 @@
-import { Page } from '@geist-ui/core';
 import { OrbitControls, Sky } from '@react-three/drei';
 import { Canvas, extend, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { Suspense, useMemo, useRef } from 'react';
@@ -10,7 +9,7 @@ import waterNormalsPic from '@/assets/water_normals.jpeg';
 extend({ Water });
 
 function Ocean() {
-  const ref = useRef();
+  const ref = useRef<any>(null!); // typescript...
   const gl = useThree((state) => state.gl);
   const waterNormals = useLoader(THREE.TextureLoader, waterNormalsPic);
   waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
@@ -34,7 +33,7 @@ function Ocean() {
 }
 
 function Box() {
-  const ref = useRef();
+  const ref = useRef<THREE.Mesh>(null!);
   useFrame((state, delta) => {
     ref.current.position.y = 10 + Math.sin(state.clock.elapsedTime) * 20;
     ref.current.rotation.x = ref.current.rotation.y = ref.current.rotation.z += delta;
